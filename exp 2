@@ -1,0 +1,28 @@
+import pandas as pd
+
+data = pd.read_csv("candidate.csv")
+
+concepts = data.iloc[:, :-1].values
+target = data.iloc[:, -1].values
+
+S = concepts[0].copy()
+G = [['?' for i in range(len(S))]]
+
+for i, h in enumerate(concepts):
+
+    if target[i] == "Yes":
+        for x in range(len(S)):
+            if h[x] != S[x]:
+                S[x] = '?'
+
+    elif target[i] == "No":
+        for x in range(len(S)):
+            if h[x] != S[x]:
+                G.append(S.copy())
+
+print("Specific Boundary:")
+print(S)
+
+print("\nGeneral Boundary:")
+for g in G:
+    print(g)
