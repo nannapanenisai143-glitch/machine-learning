@@ -1,0 +1,21 @@
+from sklearn.neighbors import KNeighborsClassifier
+import numpy as np
+
+X = np.array([[2,4],
+              [4,6],
+              [4,4],
+              [4,2],
+              [6,4],
+              [6,2]])
+
+Y = np.array(['A','A','A','B','B','B'])
+
+knn = KNeighborsClassifier(n_neighbors=3)
+
+knn.fit(X, Y)
+
+test = [[5,3]]
+
+prediction = knn.predict(test)
+
+print("Predicted Class:", prediction[0])
