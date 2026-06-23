@@ -1,0 +1,17 @@
+import pandas as pd
+
+data = pd.read_csv("finds.csv")
+
+concepts = data.iloc[:, :-1].values
+target = data.iloc[:, -1].values
+
+specific_h = concepts[0].copy()
+
+for i, val in enumerate(concepts):
+    if target[i] == "Yes":
+        for x in range(len(specific_h)):
+            if val[x] != specific_h[x]:
+                specific_h[x] = '?'
+
+print("Final Hypothesis:")
+print(specific_h)
