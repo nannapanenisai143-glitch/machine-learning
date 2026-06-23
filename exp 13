@@ -1,0 +1,17 @@
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+data = pd.DataFrame({
+    'Year':[2018,2019,2020,2021,2022],
+    'Price':[500000,550000,600000,700000,800000]
+})
+
+X = data[['Year']]
+y = data['Price']
+
+model = LinearRegression()
+model.fit(X,y)
+
+pred = model.predict([[2023]])
+
+print("Predicted Price:", pred[0])
